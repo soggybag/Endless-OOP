@@ -8,24 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		D85AA18C1D52D36500CDCE5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA18B1D52D36500CDCE5C /* AppDelegate.swift */; };
-		D85AA18E1D52D36500CDCE5C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = D85AA18D1D52D36500CDCE5C /* GameScene.sks */; };
 		D85AA1901D52D36500CDCE5C /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA18F1D52D36500CDCE5C /* GameScene.swift */; };
 		D85AA1921D52D36500CDCE5C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1911D52D36500CDCE5C /* GameViewController.swift */; };
 		D85AA1951D52D36500CDCE5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85AA1931D52D36500CDCE5C /* Main.storyboard */; };
 		D85AA1971D52D36500CDCE5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D85AA1961D52D36500CDCE5C /* Assets.xcassets */; };
 		D85AA19A1D52D36500CDCE5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85AA1981D52D36500CDCE5C /* LaunchScreen.storyboard */; };
+		D85AA1A51D52D3E600CDCE5C /* BackgroundSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1A11D52D3E600CDCE5C /* BackgroundSection.swift */; };
+		D85AA1A61D52D3E600CDCE5C /* PostionZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1A21D52D3E600CDCE5C /* PostionZ.swift */; };
+		D85AA1A71D52D3E600CDCE5C /* Ground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1A31D52D3E600CDCE5C /* Ground.swift */; };
+		D85AA1A81D52D3E600CDCE5C /* PhysicsCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1A41D52D3E600CDCE5C /* PhysicsCategory.swift */; };
+		D85AA1AA1D52DF0000CDCE5C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1A91D52DF0000CDCE5C /* Player.swift */; };
+		D85AA1AC1D52F29E00CDCE5C /* PlayState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */; };
+		D85AA1AE1D52F3F500CDCE5C /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */; };
+		D85AA1B01D52F4D400CDCE5C /* IndestructibleObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */; };
+		D85AA1B21D52FE0E00CDCE5C /* DestructibleObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D85AA1881D52D36500CDCE5C /* Endless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Endless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D85AA18B1D52D36500CDCE5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D85AA18D1D52D36500CDCE5C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		D85AA18F1D52D36500CDCE5C /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		D85AA1911D52D36500CDCE5C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		D85AA1941D52D36500CDCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D85AA1961D52D36500CDCE5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D85AA1991D52D36500CDCE5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D85AA19B1D52D36500CDCE5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D85AA1A11D52D3E600CDCE5C /* BackgroundSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSection.swift; sourceTree = "<group>"; };
+		D85AA1A21D52D3E600CDCE5C /* PostionZ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostionZ.swift; sourceTree = "<group>"; };
+		D85AA1A31D52D3E600CDCE5C /* Ground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ground.swift; sourceTree = "<group>"; };
+		D85AA1A41D52D3E600CDCE5C /* PhysicsCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsCategory.swift; sourceTree = "<group>"; };
+		D85AA1A91D52DF0000CDCE5C /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayState.swift; sourceTree = "<group>"; };
+		D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
+		D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndestructibleObstacle.swift; sourceTree = "<group>"; };
+		D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestructibleObstacle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +75,17 @@
 			isa = PBXGroup;
 			children = (
 				D85AA18B1D52D36500CDCE5C /* AppDelegate.swift */,
-				D85AA18D1D52D36500CDCE5C /* GameScene.sks */,
 				D85AA18F1D52D36500CDCE5C /* GameScene.swift */,
+				D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */,
+				D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */,
+				D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */,
+				D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */,
+				D85AA1A91D52DF0000CDCE5C /* Player.swift */,
 				D85AA1911D52D36500CDCE5C /* GameViewController.swift */,
+				D85AA1A11D52D3E600CDCE5C /* BackgroundSection.swift */,
+				D85AA1A31D52D3E600CDCE5C /* Ground.swift */,
+				D85AA1A21D52D3E600CDCE5C /* PostionZ.swift */,
+				D85AA1A41D52D3E600CDCE5C /* PhysicsCategory.swift */,
 				D85AA1931D52D36500CDCE5C /* Main.storyboard */,
 				D85AA1961D52D36500CDCE5C /* Assets.xcassets */,
 				D85AA1981D52D36500CDCE5C /* LaunchScreen.storyboard */,
@@ -128,7 +152,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D85AA18E1D52D36500CDCE5C /* GameScene.sks in Resources */,
 				D85AA19A1D52D36500CDCE5C /* LaunchScreen.storyboard in Resources */,
 				D85AA1971D52D36500CDCE5C /* Assets.xcassets in Resources */,
 				D85AA1951D52D36500CDCE5C /* Main.storyboard in Resources */,
@@ -142,9 +165,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D85AA1B21D52FE0E00CDCE5C /* DestructibleObstacle.swift in Sources */,
+				D85AA1A71D52D3E600CDCE5C /* Ground.swift in Sources */,
 				D85AA1901D52D36500CDCE5C /* GameScene.swift in Sources */,
+				D85AA1AC1D52F29E00CDCE5C /* PlayState.swift in Sources */,
 				D85AA1921D52D36500CDCE5C /* GameViewController.swift in Sources */,
 				D85AA18C1D52D36500CDCE5C /* AppDelegate.swift in Sources */,
+				D85AA1B01D52F4D400CDCE5C /* IndestructibleObstacle.swift in Sources */,
+				D85AA1AE1D52F3F500CDCE5C /* GameOverState.swift in Sources */,
+				D85AA1AA1D52DF0000CDCE5C /* Player.swift in Sources */,
+				D85AA1A61D52D3E600CDCE5C /* PostionZ.swift in Sources */,
+				D85AA1A51D52D3E600CDCE5C /* BackgroundSection.swift in Sources */,
+				D85AA1A81D52D3E600CDCE5C /* PhysicsCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
