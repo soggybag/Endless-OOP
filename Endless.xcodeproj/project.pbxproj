@@ -78,20 +78,36 @@
 				D85AA18F1D52D36500CDCE5C /* GameScene.swift */,
 				D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */,
 				D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */,
-				D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */,
-				D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */,
 				D85AA1A91D52DF0000CDCE5C /* Player.swift */,
 				D85AA1911D52D36500CDCE5C /* GameViewController.swift */,
 				D85AA1A11D52D3E600CDCE5C /* BackgroundSection.swift */,
 				D85AA1A31D52D3E600CDCE5C /* Ground.swift */,
-				D85AA1A21D52D3E600CDCE5C /* PostionZ.swift */,
-				D85AA1A41D52D3E600CDCE5C /* PhysicsCategory.swift */,
+				D85AA1B31D538A7500CDCE5C /* States */,
+				D85AA1B41D538A8800CDCE5C /* Constants */,
 				D85AA1931D52D36500CDCE5C /* Main.storyboard */,
 				D85AA1961D52D36500CDCE5C /* Assets.xcassets */,
 				D85AA1981D52D36500CDCE5C /* LaunchScreen.storyboard */,
 				D85AA19B1D52D36500CDCE5C /* Info.plist */,
 			);
 			path = Endless;
+			sourceTree = "<group>";
+		};
+		D85AA1B31D538A7500CDCE5C /* States */ = {
+			isa = PBXGroup;
+			children = (
+				D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */,
+				D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */,
+			);
+			name = States;
+			sourceTree = "<group>";
+		};
+		D85AA1B41D538A8800CDCE5C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				D85AA1A41D52D3E600CDCE5C /* PhysicsCategory.swift */,
+				D85AA1A21D52D3E600CDCE5C /* PostionZ.swift */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

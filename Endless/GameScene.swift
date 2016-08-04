@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdateTime: CFTimeInterval = 0
     var playerSpeed: CGFloat = 80
     var gameState: GKStateMachine!
-    
+    var leftTouchDown = false
     
     
     // MARK: - Init
@@ -106,7 +106,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
        /* Called when a touch begins */
         
         for touch in touches {
+            let location = touch.locationInNode(cameraNode)
             
+            if location.x < 0 {
+                // This touch was on the left side of the screen
+                leftTouchDown = true
+                
+            } else {
+                // This touch was on the right side of the screen
+                
+            }
+        }
+    }
+    
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        /* Called when a touch ends */
+        // Check all touches
+        for touch in touches {
+            let location = touch.locationInNode(cameraNode)
+            if location.x < 0 {
+                // This touch was on the left side of the screen
+                leftTouchDown = false
+                
+            } else {
+                // This touch was on the right side of the screen
+                
+            }
         }
     }
    
@@ -133,13 +158,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         scrollSceneNodes()
         
-        // TODO: Use deltaTime here
-        /*
-        if touchDown {
-            let upVector = CGVector(dx: 0, dy: 22)
-            // Push the player up
-            player.physicsBody?.applyForce(upVector)
-        } */
+        
+
+        if leftTouchDown {
+            // TODO: Use deltaTime here
+            player.fly()
+        }
     }
     
     func scrollSceneNodes() {

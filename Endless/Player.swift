@@ -11,7 +11,7 @@ import SpriteKit
 class Player: SKSpriteNode {
     
     
-    
+    var upVector = CGVector(dx: 0, dy: 200)
     
     
     // MARK: - Init
@@ -36,9 +36,19 @@ class Player: SKSpriteNode {
     
     func setup() {
         physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody!.allowsRotation = false
+        
         physicsBody!.categoryBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.Ground | PhysicsCategory.Lava
         physicsBody!.contactTestBitMask = PhysicsCategory.Destructible | PhysicsCategory.Indestructible | PhysicsCategory.Coin | PhysicsCategory.Lava
+    }
+    
+    
+    
+    // MARK: - Utility 
+    
+    func fly() {
+        physicsBody!.applyForce(upVector)
     }
     
 }
