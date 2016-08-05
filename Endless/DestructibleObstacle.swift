@@ -52,7 +52,7 @@ class DestructibleObstacle: SKSpriteNode {
         physicsBody!.dynamic = false
         physicsBody!.categoryBitMask = PhysicsCategory.Destructible
         physicsBody!.collisionBitMask = PhysicsCategory.None
-        physicsBody!.contactTestBitMask = PhysicsCategory.Player
+        physicsBody!.contactTestBitMask = PhysicsCategory.Player | PhysicsCategory.Bullet
     }
     
 }

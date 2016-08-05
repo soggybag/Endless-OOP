@@ -12,6 +12,8 @@ class Bullet: SKSpriteNode {
     
     
     
+    
+    
     // MARK: - Init
     
     init() {
@@ -20,7 +22,6 @@ class Bullet: SKSpriteNode {
         super.init(texture: nil, color: UIColor.cyanColor(), size: bulletSize)
         
         setup()
-        
         
     }
     
@@ -33,6 +34,9 @@ class Bullet: SKSpriteNode {
     
     func setup() {
         physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        
+        physicsBody!.affectedByGravity = false
+        physicsBody!.allowsRotation = false
         
         physicsBody!.categoryBitMask = PhysicsCategory.Bullet
         physicsBody!.collisionBitMask = PhysicsCategory.None

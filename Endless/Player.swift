@@ -47,9 +47,11 @@ class Player: SKSpriteNode {
     }
     
     func reset() {
+        isFlying = false
         zRotation = 0
         physicsBody!.velocity = CGVector(dx: 0, dy: 0)
         physicsBody!.angularVelocity = 0
+        physicsBody!.allowsRotation = false
         
         physicsBody!.categoryBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.Ground | PhysicsCategory.Lava

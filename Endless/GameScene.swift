@@ -40,6 +40,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupStateMachine()
         setupPhysics()
         setupGameOver()
+        setupCeiling()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -98,6 +99,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gameOver.hidden = true
     }
     
+    func setupCeiling() {
+        let ceilingSize = CGSize(width: size.width, height: 20)
+        let ceiling = SKSpriteNode(color: UIColor.darkGrayColor(), size: ceilingSize)
+        cameraNode.addChild(ceiling)
+        ceiling.position.y = size.height / 2 - ceilingSize.height / 2
+        ceiling.zPosition = PostitionZ.Background
+        
+        ceiling.physicsBody = SKPhysicsBody(rectangleOfSize: ceilingSize)
+        ceiling.physicsBody!.dynamic = false
+        
+    }
     
     
     
@@ -133,6 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                 } else {
                     // This touch was on the right side of the screen
+                    fireBullet()
                     
                 }
             }
@@ -208,6 +221,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func fireBullet() {
+        let bullet = Bullet()
+        addChild(bullet)
+        bullet.position = player.position
+        let move = SKAction.moveByX(size.width / 2, y: 0, duration: 1)
+        let remove = SKAction.removeFromParent()
+        bullet.runAction(SKAction.sequence([move, remove]))
+    }
+    
     
     
     
@@ -264,6 +286,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Player Contact Lava")
             gameState.enterState(GameOverState)
             
+        } else if collision == PhysicsCategory.Bullet | PhysicsCategory.Destructible {
+            print("Bullet hit Destructible")
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
         }
     }
 }
