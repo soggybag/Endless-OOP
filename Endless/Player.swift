@@ -42,6 +42,7 @@ class Player: SKSpriteNode {
         zPosition = PostitionZ.Player
         physicsBody = SKPhysicsBody(rectangleOfSize: size)
         physicsBody!.allowsRotation = false
+        physicsBody!.angularDamping = 0.2
         
         reset()
     }

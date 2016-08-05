@@ -59,6 +59,8 @@ class BackgroundSection: SKNode {
     // MARK: - 
     
     func generateContent() {
+        contentNode.removeAllChildren()
+        
         let n = arc4random() % 2
         
         switch n {
