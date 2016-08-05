@@ -72,10 +72,15 @@ class Ground: SKNode {
             groundNodes[1].physicsBody!.categoryBitMask = PhysicsCategory.Lava
             groundNodes[1].physicsBody!.contactTestBitMask = PhysicsCategory.Player
         default:
-            groundNodes[1].color = UIColor.brownColor()
-            groundNodes[1].physicsBody!.categoryBitMask = PhysicsCategory.Ground
-            groundNodes[1].physicsBody!.contactTestBitMask = PhysicsCategory.None
+            reset()
         }
+    }
+    
+    func reset() {
+        
+        groundNodes[1].color = UIColor.brownColor()
+        groundNodes[1].physicsBody!.categoryBitMask = PhysicsCategory.Ground
+        groundNodes[1].physicsBody!.contactTestBitMask = PhysicsCategory.None
     }
     
 }

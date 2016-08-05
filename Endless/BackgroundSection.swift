@@ -59,8 +59,6 @@ class BackgroundSection: SKNode {
     // MARK: - 
     
     func generateContent() {
-        contentNode.removeAllChildren()
-        
         let n = arc4random() % 2
         
         switch n {
@@ -85,4 +83,10 @@ class BackgroundSection: SKNode {
             break
         }
     }
+    
+    func reset() {
+        contentNode.removeAllChildren()
+        ground.reset()
+    }
+    
 }

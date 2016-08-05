@@ -22,6 +22,10 @@
 		D85AA1AE1D52F3F500CDCE5C /* GameOverState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */; };
 		D85AA1B01D52F4D400CDCE5C /* IndestructibleObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */; };
 		D85AA1B21D52FE0E00CDCE5C /* DestructibleObstacle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */; };
+		D85AA1B61D53A67900CDCE5C /* CountdownState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1B51D53A67900CDCE5C /* CountdownState.swift */; };
+		D85AA1B81D53D36C00CDCE5C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1B71D53D36C00CDCE5C /* GameOver.swift */; };
+		D85AA1BA1D53D4CA00CDCE5C /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1B91D53D4CA00CDCE5C /* ButtonNode.swift */; };
+		D85AA1BC1D5443FC00CDCE5C /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D85AA1BB1D5443FC00CDCE5C /* Bullet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +46,10 @@
 		D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverState.swift; sourceTree = "<group>"; };
 		D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndestructibleObstacle.swift; sourceTree = "<group>"; };
 		D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestructibleObstacle.swift; sourceTree = "<group>"; };
+		D85AA1B51D53A67900CDCE5C /* CountdownState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountdownState.swift; sourceTree = "<group>"; };
+		D85AA1B71D53D36C00CDCE5C /* GameOver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
+		D85AA1B91D53D4CA00CDCE5C /* ButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
+		D85AA1BB1D5443FC00CDCE5C /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,17 +84,20 @@
 			children = (
 				D85AA18B1D52D36500CDCE5C /* AppDelegate.swift */,
 				D85AA18F1D52D36500CDCE5C /* GameScene.swift */,
+				D85AA1B71D53D36C00CDCE5C /* GameOver.swift */,
+				D85AA1A91D52DF0000CDCE5C /* Player.swift */,
 				D85AA1AF1D52F4D400CDCE5C /* IndestructibleObstacle.swift */,
 				D85AA1B11D52FE0E00CDCE5C /* DestructibleObstacle.swift */,
-				D85AA1A91D52DF0000CDCE5C /* Player.swift */,
-				D85AA1911D52D36500CDCE5C /* GameViewController.swift */,
 				D85AA1A11D52D3E600CDCE5C /* BackgroundSection.swift */,
+				D85AA1BB1D5443FC00CDCE5C /* Bullet.swift */,
 				D85AA1A31D52D3E600CDCE5C /* Ground.swift */,
+				D85AA1B91D53D4CA00CDCE5C /* ButtonNode.swift */,
 				D85AA1B31D538A7500CDCE5C /* States */,
 				D85AA1B41D538A8800CDCE5C /* Constants */,
+				D85AA1911D52D36500CDCE5C /* GameViewController.swift */,
 				D85AA1931D52D36500CDCE5C /* Main.storyboard */,
-				D85AA1961D52D36500CDCE5C /* Assets.xcassets */,
 				D85AA1981D52D36500CDCE5C /* LaunchScreen.storyboard */,
+				D85AA1961D52D36500CDCE5C /* Assets.xcassets */,
 				D85AA19B1D52D36500CDCE5C /* Info.plist */,
 			);
 			path = Endless;
@@ -96,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				D85AA1AB1D52F29E00CDCE5C /* PlayState.swift */,
+				D85AA1B51D53A67900CDCE5C /* CountdownState.swift */,
 				D85AA1AD1D52F3F500CDCE5C /* GameOverState.swift */,
 			);
 			name = States;
@@ -185,14 +197,18 @@
 				D85AA1A71D52D3E600CDCE5C /* Ground.swift in Sources */,
 				D85AA1901D52D36500CDCE5C /* GameScene.swift in Sources */,
 				D85AA1AC1D52F29E00CDCE5C /* PlayState.swift in Sources */,
+				D85AA1B61D53A67900CDCE5C /* CountdownState.swift in Sources */,
 				D85AA1921D52D36500CDCE5C /* GameViewController.swift in Sources */,
 				D85AA18C1D52D36500CDCE5C /* AppDelegate.swift in Sources */,
 				D85AA1B01D52F4D400CDCE5C /* IndestructibleObstacle.swift in Sources */,
 				D85AA1AE1D52F3F500CDCE5C /* GameOverState.swift in Sources */,
+				D85AA1B81D53D36C00CDCE5C /* GameOver.swift in Sources */,
 				D85AA1AA1D52DF0000CDCE5C /* Player.swift in Sources */,
 				D85AA1A61D52D3E600CDCE5C /* PostionZ.swift in Sources */,
 				D85AA1A51D52D3E600CDCE5C /* BackgroundSection.swift in Sources */,
 				D85AA1A81D52D3E600CDCE5C /* PhysicsCategory.swift in Sources */,
+				D85AA1BA1D53D4CA00CDCE5C /* ButtonNode.swift in Sources */,
+				D85AA1BC1D5443FC00CDCE5C /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +358,7 @@
 				D85AA1A01D52D36500CDCE5C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

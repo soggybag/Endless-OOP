@@ -12,4 +12,6 @@ struct PostitionZ {
     static let Background: CGFloat = -1
     static let Ground: CGFloat = 1
     static let Player: CGFloat = 2
+    
+    static let GameOver: CGFloat = 999
 }

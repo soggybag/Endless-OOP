@@ -9,19 +9,10 @@
 import SpriteKit
 import GameplayKit
 
-class PlayState: GKState {
+class CountdownState: GKState {
     unowned let scene: GameScene
     
     init(scene: GameScene) {
         self.scene = scene
-    }
-    
-    override func didEnterWithPreviousState(previousState: GKState?) {
-        scene.restart()
-    }
-    
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
-        scene.player.move(seconds)
-        scene.scrollSceneNodes()
     }
 }

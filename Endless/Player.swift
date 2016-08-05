@@ -10,8 +10,12 @@ import SpriteKit
 
 class Player: SKSpriteNode {
     
+    var playerSpeed: CGFloat = 80
+    var upVector = CGVector(dx: 0, dy: 220)
+    var isFlying: Bool = false
     
-    var upVector = CGVector(dx: 0, dy: 200)
+    
+    
     
     
     // MARK: - Init
@@ -35,8 +39,17 @@ class Player: SKSpriteNode {
     // MARK: - Setup
     
     func setup() {
+        zPosition = PostitionZ.Player
         physicsBody = SKPhysicsBody(rectangleOfSize: size)
         physicsBody!.allowsRotation = false
+        
+        reset()
+    }
+    
+    func reset() {
+        zRotation = 0
+        physicsBody!.velocity = CGVector(dx: 0, dy: 0)
+        physicsBody!.angularVelocity = 0
         
         physicsBody!.categoryBitMask = PhysicsCategory.Player
         physicsBody!.collisionBitMask = PhysicsCategory.Ground | PhysicsCategory.Lava
@@ -45,10 +58,25 @@ class Player: SKSpriteNode {
     
     
     
+    
     // MARK: - Utility 
     
-    func fly() {
-        physicsBody!.applyForce(upVector)
+    func move(deltaTime: CFTimeInterval) {
+        position.x += playerSpeed * CGFloat(deltaTime)
+        if isFlying {
+            physicsBody!.applyForce(upVector)
+        }
+    }
+    
+    func deathAnimation() {
+        physicsBody!.allowsRotation = true
+        
+        physicsBody!.categoryBitMask = PhysicsCategory.None
+        physicsBody!.collisionBitMask = PhysicsCategory.None
+        physicsBody!.contactTestBitMask = PhysicsCategory.None
+        
+        physicsBody!.applyImpulse(CGVector(dx: 0, dy: 35))
+        physicsBody!.applyAngularImpulse(20)
     }
     
 }

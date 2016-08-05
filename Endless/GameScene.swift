@@ -16,9 +16,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let player: Player
     let cameraNode: SKCameraNode
     var lastUpdateTime: CFTimeInterval = 0
-    var playerSpeed: CGFloat = 80
     var gameState: GKStateMachine!
     var leftTouchDown = false
+    let gameOver: GameOver
     
     
     // MARK: - Init
@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player = Player()
         cameraNode = SKCameraNode()
+        gameOver = GameOver(size: size)
         
         super.init(size: size)
         
@@ -38,6 +39,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupCamera()
         setupStateMachine()
         setupPhysics()
+        setupGameOver()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,14 +61,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupPlayer() {
         addChild(player)
+        resetPlayer()
+    }
+    
+    func resetPlayer() {
         player.position.x = size.width / 2
         player.position.y = 120
-        player.zPosition = PostitionZ.Player
     }
     
     func setupCamera() {
         addChild(cameraNode)
         camera = cameraNode
+        resetCamera()
+    }
+    
+    func resetCamera() {
         cameraNode.position.x = size.width / 2
         cameraNode.position.y = size.height / 2
     }
@@ -74,12 +83,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupStateMachine() {
         let playState = PlayState(scene: self)
         let gameOverState = GameOverState(scene: self)
+        let countdownState = CountdownState(scene: self)
         
-        gameState = GKStateMachine(states: [playState, gameOverState])
+        gameState = GKStateMachine(states: [playState, gameOverState, countdownState])
+        gameState.enterState(PlayState)
     }
     
     func setupPhysics() {
         physicsWorld.contactDelegate = self
+    }
+    
+    func setupGameOver() {
+        cameraNode.addChild(gameOver)
+        gameOver.hidden = true
     }
     
     
@@ -103,38 +119,95 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Touches
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+        /* Called when a touch begins */
         
-        for touch in touches {
-            let location = touch.locationInNode(cameraNode)
-            
-            if location.x < 0 {
-                // This touch was on the left side of the screen
-                leftTouchDown = true
+        switch gameState.currentState {
+        case is PlayState:
+            for touch in touches {
+                let location = touch.locationInNode(cameraNode)
                 
-            } else {
-                // This touch was on the right side of the screen
-                
+                if location.x < 0 {
+                    // This touch was on the left side of the screen
+                    leftTouchDown = true
+                    player.isFlying = true
+                    
+                } else {
+                    // This touch was on the right side of the screen
+                    
+                }
             }
+            
+        case is GameOverState:
+            let touch = touches.first!
+            let location = touch.locationInNode(self)
+            let node = self.nodeAtPoint(location)
+            if node.name == "start over" {
+                gameState.enterState(PlayState)
+            }
+            
+        default:
+            break
         }
     }
+    
+    
+    // TODO: Refactor into functions to handle touches for states.
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         /* Called when a touch ends */
         // Check all touches
-        for touch in touches {
-            let location = touch.locationInNode(cameraNode)
-            if location.x < 0 {
-                // This touch was on the left side of the screen
-                leftTouchDown = false
-                
-            } else {
-                // This touch was on the right side of the screen
-                
+        switch gameState.currentState {
+        case is PlayState:
+            for touch in touches {
+                let location = touch.locationInNode(cameraNode)
+                if location.x < 0 {
+                    // This touch was on the left side of the screen
+                    leftTouchDown = false
+                    player.isFlying = false
+                    
+                } else {
+                    // This touch was on the right side of the screen
+                    
+                }
             }
+            
+        case is GameOverState:
+            break
+            
+        default:
+            break
+            
         }
+        
+        
+    }
+    
+    
+    
+    
+    // MARK: - Helper Functions 
+    
+    func showGameOver() {
+        gameOver.hidden = false
     }
    
+    func restart() {
+        // TODO: Reset background
+        
+        gameOver.hidden = true
+        resetBackground()
+        resetCamera()
+        resetPlayer()
+        player.reset()
+    }
+    
+    func resetBackground() {
+        for i in 0 ..< backgrounds.count {
+            backgrounds[i].position.x = backgroundWidth * CGFloat(i)
+            backgrounds[i].reset()
+        }
+    }
+    
     
     
     
@@ -149,24 +222,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdateTime = currentTime
         }
         
-        player.position.x += playerSpeed * CGFloat(deltaTime)
-        
+        gameState.updateWithDeltaTime(deltaTime)
         
         // distanceTravelled = Int(player.position.x / 30)
-        
-        cameraNode.position.x = player.position.x
-        
-        scrollSceneNodes()
-        
-        
-
-        if leftTouchDown {
-            // TODO: Use deltaTime here
-            player.fly()
-        }
     }
     
     func scrollSceneNodes() {
+        cameraNode.position.x = player.position.x
         for node in backgrounds {
             let x = node.position.x - cameraNode.position.x
             if x < -(backgroundWidth + view!.frame.width / 2) {
@@ -189,12 +251,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if collision == PhysicsCategory.Player | PhysicsCategory.Destructible {
             print("Player Contact Destructible")
+            gameState.enterState(GameOverState)
+            
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Indestructible {
             print("Player Contact Indestructible")
+            gameState.enterState(GameOverState)
+            
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Coin {
             print("PLayer Contact Coin")
+            
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Lava {
             print("Player Contact Lava")
+            gameState.enterState(GameOverState)
+            
         }
     }
 }
