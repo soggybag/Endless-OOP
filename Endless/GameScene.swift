@@ -251,13 +251,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func scrollSceneNodes() {
         cameraNode.position.x = player.position.x
-        for node in backgrounds {
-            let x = node.position.x - cameraNode.position.x
+        for background in backgrounds {
+            let x = background.position.x - cameraNode.position.x
             if x < -(backgroundWidth + view!.frame.width / 2) {
-                node.position.x += backgroundWidth * 2
-                // addContentToSceneNode(node)
-                node.ground.reconfigure()
-                node.generateContent()
+                background.position.x += backgroundWidth * 2
+                
+                background.ground.reconfigure()
+                background.generateContent()
             }
         }
     }
