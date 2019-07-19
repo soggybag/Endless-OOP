@@ -19,7 +19,7 @@ class Bullet: SKSpriteNode {
     init() {
         let bulletSize = CGSize(width: 20, height: 10)
         
-        super.init(texture: nil, color: UIColor.cyanColor(), size: bulletSize)
+        super.init(texture: nil, color: UIColor.cyan, size: bulletSize)
         
         setup()
         
@@ -33,7 +33,7 @@ class Bullet: SKSpriteNode {
     // MARK: - Setup
     
     func setup() {
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         
         physicsBody!.affectedByGravity = false
         physicsBody!.allowsRotation = false

@@ -33,7 +33,7 @@ class IndestructibleObstacle: SKSpriteNode {
     
     init(size: CGSize) {
         
-        super.init(texture: nil, color: UIColor.blueColor(), size: size)
+        super.init(texture: nil, color: UIColor.blue, size: size)
         
         setup()
     }
@@ -48,8 +48,8 @@ class IndestructibleObstacle: SKSpriteNode {
     // MARK: - Setup 
     
     func setup() {
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
-        physicsBody!.dynamic = false
+        physicsBody = SKPhysicsBody(rectangleOf: size)
+        physicsBody!.isDynamic = false
         physicsBody!.categoryBitMask = PhysicsCategory.Indestructible
         physicsBody!.collisionBitMask = PhysicsCategory.None
         physicsBody!.contactTestBitMask = PhysicsCategory.Player

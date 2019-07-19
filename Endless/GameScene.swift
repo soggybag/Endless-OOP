@@ -87,7 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let countdownState = CountdownState(scene: self)
         
         gameState = GKStateMachine(states: [playState, gameOverState, countdownState])
-        gameState.enterState(PlayState)
+        gameState.enter(PlayState())
     }
     
     func setupPhysics() {
@@ -96,18 +96,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupGameOver() {
         cameraNode.addChild(gameOver)
-        gameOver.hidden = true
+        gameOver.isHidden = true
     }
     
     func setupCeiling() {
         let ceilingSize = CGSize(width: size.width, height: 20)
-        let ceiling = SKSpriteNode(color: UIColor.darkGrayColor(), size: ceilingSize)
+        let ceiling = SKSpriteNode(color: UIColor.darkGray, size: ceilingSize)
         cameraNode.addChild(ceiling)
         ceiling.position.y = size.height / 2 - ceilingSize.height / 2
         ceiling.zPosition = PostitionZ.Background
         
-        ceiling.physicsBody = SKPhysicsBody(rectangleOfSize: ceilingSize)
-        ceiling.physicsBody!.dynamic = false
+        ceiling.physicsBody = SKPhysicsBody(rectangleOf: ceilingSize)
+        ceiling.physicsBody!.isDynamic = false
         
     }
     
@@ -119,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Did Move to View
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         /* Setup your scene here */
         
     }
@@ -130,13 +130,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Touches
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         /* Called when a touch begins */
         
         switch gameState.currentState {
         case is PlayState:
             for touch in touches {
-                let location = touch.locationInNode(cameraNode)
+                let location = touch.location(in: cameraNode)
                 
                 if location.x < 0 {
                     // This touch was on the left side of the screen
@@ -152,10 +152,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case is GameOverState:
             let touch = touches.first!
-            let location = touch.locationInNode(self)
-            let node = self.nodeAtPoint(location)
+            let location = touch.location(in: self)
+            let node = self.atPoint(location)
             if node.name == "start over" {
-                gameState.enterState(PlayState)
+                gameState.enter(PlayState(scene: <#GameScene#>))
             }
             
         default:
@@ -166,13 +166,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // TODO: Refactor into functions to handle touches for states.
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         /* Called when a touch ends */
         // Check all touches
         switch gameState.currentState {
         case is PlayState:
             for touch in touches {
-                let location = touch.locationInNode(cameraNode)
+                let location = touch.location(in: cameraNode)
                 if location.x < 0 {
                     // This touch was on the left side of the screen
                     leftTouchDown = false
@@ -201,13 +201,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // MARK: - Helper Functions 
     
     func showGameOver() {
-        gameOver.hidden = false
+        gameOver.isHidden = false
     }
    
     func restart() {
         // TODO: Reset background
         
-        gameOver.hidden = true
+        gameOver.isHidden = true
         resetBackground()
         resetCamera()
         resetPlayer()
@@ -225,9 +225,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bullet = Bullet()
         addChild(bullet)
         bullet.position = player.position
-        let move = SKAction.moveByX(size.width / 2, y: 0, duration: 1)
+        let move = SKAction.moveBy(x: size.width / 2, y: 0, duration: 1)
         let remove = SKAction.removeFromParent()
-        bullet.runAction(SKAction.sequence([move, remove]))
+        bullet.run(SKAction.sequence([move, remove]))
     }
     
     
@@ -235,7 +235,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Update
     
-    override func update(currentTime: CFTimeInterval) {
+    override func update(_ currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         var deltaTime: CFTimeInterval = currentTime - lastUpdateTime
         lastUpdateTime = currentTime
@@ -244,7 +244,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdateTime = currentTime
         }
         
-        gameState.updateWithDeltaTime(deltaTime)
+        gameState.update(deltaTime: deltaTime)
         
         // distanceTravelled = Int(player.position.x / 30)
     }
@@ -273,18 +273,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if collision == PhysicsCategory.Player | PhysicsCategory.Destructible {
             print("Player Contact Destructible")
-            gameState.enterState(GameOverState)
+            gameState.enter(GameOverState(scene: <#GameScene#>))
             
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Indestructible {
             print("Player Contact Indestructible")
-            gameState.enterState(GameOverState)
+            gameState.enter(GameOverState(scene: <#GameScene#>))
             
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Coin {
             print("PLayer Contact Coin")
             
         } else if collision == PhysicsCategory.Player | PhysicsCategory.Lava {
             print("Player Contact Lava")
-            gameState.enterState(GameOverState)
+            gameState.enter(GameOverState(scene: <#GameScene#>))
             
         } else if collision == PhysicsCategory.Bullet | PhysicsCategory.Destructible {
             print("Bullet hit Destructible")

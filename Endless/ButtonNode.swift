@@ -43,14 +43,14 @@ class ButtonNode: SKSpriteNode {
         switch state {
         case .Normal:
             texture = normal
-            userInteractionEnabled = true
+            isUserInteractionEnabled = true
             
         case .Active:
             texture = active
             
         case .Disabled:
             texture = disabled
-            userInteractionEnabled = false
+            isUserInteractionEnabled = false
             
         }
     }
@@ -61,12 +61,11 @@ class ButtonNode: SKSpriteNode {
         }
     }
     
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         state = .Active
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         state = .Normal
         selectedHandler()
     }
@@ -78,9 +77,9 @@ class ButtonNode: SKSpriteNode {
         active = SKTexture(imageNamed: activeImageNamed)
         disabled = SKTexture(imageNamed: disabledImageNamed)
         
-        super.init(texture: normal, color: UIColor.clearColor(), size: normal.size())
+        super.init(texture: normal, color: UIColor.clear, size: normal.size())
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         
         state = .Normal
         setButtonState()

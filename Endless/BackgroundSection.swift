@@ -28,7 +28,7 @@ class BackgroundSection: SKNode {
         let test = SKSpriteNode(color: UIColor(hue: hue, saturation: 1, brightness: 1, alpha: 0.3) , size: size)
         addChild(test)
         test.zPosition = PostitionZ.Background
-        test.anchorPoint = CGPointZero
+        test.anchorPoint = CGPoint.zero
         
         setupGround()
         setupContentNode()

@@ -18,7 +18,7 @@ class GameOver: SKSpriteNode {
     
     init(size: CGSize) {
         label = SKLabelNode(fontNamed: "Helvetica")
-        button = SKSpriteNode(color: UIColor.whiteColor(), size: CGSize(width: 80, height: 40))
+        button = SKSpriteNode(color: UIColor.white, size: CGSize(width: 80, height: 40))
         let color = UIColor(white: 1, alpha: 0.5)
         
         super.init(texture: nil, color: color, size: size)

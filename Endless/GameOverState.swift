@@ -17,19 +17,19 @@ class GameOverState: GKState {
     }
     
     
-    override func isValidNextState(stateClass: AnyClass) -> Bool {
+    override func isValidNextState(_ stateClass: AnyClass) -> Bool {
         return stateClass is PlayState.Type
     }
     
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         // Animate player death
-        print("Entering Game Over State From: \(previousState)")
+        print("Entering Game Over State From: \(String(describing: previousState))")
         scene.player.deathAnimation()
         scene.showGameOver()
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
+    override func update(deltaTime seconds: TimeInterval) {
         //
     }
 }

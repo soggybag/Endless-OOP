@@ -16,12 +16,14 @@ class PlayState: GKState {
         self.scene = scene
     }
     
-    override func didEnterWithPreviousState(previousState: GKState?) {
+    override func didEnter(from previousState: GKState?) {
         scene.restart()
     }
     
-    override func updateWithDeltaTime(seconds: NSTimeInterval) {
-        scene.player.move(seconds)
-        scene.scrollSceneNodes()
-    }
+    
+    
+//    override func update(deltaTime: TimeInterval) {
+//        scene.player.move(seconds)
+//        scene.scrollSceneNodes()
+//    }
 }

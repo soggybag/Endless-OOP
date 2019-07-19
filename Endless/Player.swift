@@ -24,7 +24,7 @@ class Player: SKSpriteNode {
         
         let playerSize = CGSize(width: 40, height: 65)
         
-        super.init(texture: nil, color: UIColor.blackColor(), size: playerSize)
+        super.init(texture: nil, color: UIColor.black, size: playerSize)
         
         setup()
     }
@@ -40,7 +40,7 @@ class Player: SKSpriteNode {
     
     func setup() {
         zPosition = PostitionZ.Player
-        physicsBody = SKPhysicsBody(rectangleOfSize: size)
+        physicsBody = SKPhysicsBody(rectangleOf: size)
         physicsBody!.allowsRotation = false
         physicsBody!.angularDamping = 0.2
         

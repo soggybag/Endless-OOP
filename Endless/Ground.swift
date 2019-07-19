@@ -42,15 +42,15 @@ class Ground: SKNode {
         for i in 0 ..< groundNodes.count {
             let node = groundNodes[i]
             addChild(node)
-            node.color = UIColor.brownColor()
+            node.color = UIColor.brown
             let w = size.width / 3
             let h = size.height
             
             node.size = CGSize(width: w, height: h)
             node.position = CGPoint(x: CGFloat(i) * w + w / 2, y: h / 2)
             
-            node.physicsBody = SKPhysicsBody(rectangleOfSize: node.size)
-            node.physicsBody!.dynamic = false
+            node.physicsBody = SKPhysicsBody(rectangleOf: node.size)
+            node.physicsBody!.isDynamic = false
             node.physicsBody!.categoryBitMask = PhysicsCategory.Ground
             node.physicsBody!.collisionBitMask = PhysicsCategory.Player
             node.physicsBody!.contactTestBitMask = PhysicsCategory.None
@@ -68,7 +68,7 @@ class Ground: SKNode {
         
         switch n {
         case 0:
-            groundNodes[1].color = UIColor.redColor()
+            groundNodes[1].color = UIColor.red
             groundNodes[1].physicsBody!.categoryBitMask = PhysicsCategory.Lava
             groundNodes[1].physicsBody!.contactTestBitMask = PhysicsCategory.Player
         default:
@@ -78,7 +78,7 @@ class Ground: SKNode {
     
     func reset() {
         
-        groundNodes[1].color = UIColor.brownColor()
+        groundNodes[1].color = UIColor.brown
         groundNodes[1].physicsBody!.categoryBitMask = PhysicsCategory.Ground
         groundNodes[1].physicsBody!.contactTestBitMask = PhysicsCategory.None
     }
